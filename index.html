@@ -1,28 +1,36 @@
 ---
 layout: default
 ---
-<div class="hero slide-up">
-    <h1 class="hero-title">Welcome to the Clear Moon.</h1>
-    <p class="hero-subtitle">A space for serene thoughts and bright ideas.</p>
+<div class="hero fade-in">
+    <h1 class="hero-title">Programming essays, thoughts, and notes.</h1>
 </div>
 
-<div class="blog-grid">
-    {% for blog in site.blogs %}
-    <a href="{{ site.baseurl }}{{ blog.url }}" class="blog-card fade-in">
-        <div class="blog-card-content">
-            <h2 class="blog-card-title">{{ blog.title | default: blog.name }}</h2>
-            <p class="blog-card-excerpt">{{ blog.excerpt | strip_html | truncatewords: 20 }}</p>
-        </div>
-        <div class="blog-card-footer">
-            <span class="read-more">Read article <span class="arrow">&rarr;</span></span>
-            {% if blog.date %}
-            <span class="card-date">{{ blog.date | date: "%b %-d, %Y" }}</span>
-            {% endif %}
-        </div>
-    </a>
-    {% else %}
-    <div class="empty-state fade-in">
-        <p>The moon is clear tonight... No blogs found. Start writing by adding markdown files to the <code>_blogs</code> folder!</p>
+<div class="posts-list">
+    <div class="list-header fade-in">
+        <span class="eyebrow">Latest posts</span>
+        <hr class="header-line">
     </div>
-    {% endfor %}
+
+    <div class="posts" aria-live="polite">
+        {% for blog in site.blogs %}
+        <a class="post-row slide-up" href="{{ site.baseurl }}{{ blog.url }}">
+            <div class="post-meta">
+                {% if blog.date %}
+                <time datetime="{{ blog.date | date_to_xmlschema }}">{{ blog.date | date: "%b %-d, %Y" }}</time>
+                {% endif %}
+            </div>
+            <div class="post-copy">
+                <h2>{{ blog.title | default: blog.name }}</h2>
+                <p>{{ blog.excerpt | strip_html | truncatewords: 25 }}</p>
+                <div class="read-meta">
+                    <span class="read-link">Read article <span class="arrow">&rarr;</span></span>
+                </div>
+            </div>
+        </a>
+        {% else %}
+        <div class="empty-state slide-up">
+            <p>No blogs published yet. Start writing by adding markdown files to the <code>_blogs</code> folder.</p>
+        </div>
+        {% endfor %}
+    </div>
 </div>

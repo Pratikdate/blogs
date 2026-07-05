@@ -6,9 +6,8 @@ layout: default
         <h1 class="blog-title">{{ page.title | default: page.name }}</h1>
         <div class="blog-meta">
             {% if page.date %}
-            <span class="blog-date">{{ page.date | date: "%B %-d, %Y" }}</span>
+            <time class="blog-date" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%b %-d, %Y" }}</time>
             {% endif %}
-            <span class="blog-author">By Shanacoder</span>
         </div>
     </header>
     
@@ -17,6 +16,6 @@ layout: default
     </div>
     
     <div class="blog-footer">
-        <a href="{{ site.baseurl }}/" class="back-link">&larr; Back to all blogs</a>
+        <a href="{{ site.baseurl }}/" class="back-link">&larr; Back to writing</a>
     </div>
 </article>
