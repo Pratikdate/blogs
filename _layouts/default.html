@@ -45,6 +45,17 @@
     <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Jekyll markdown renders mermaid as <code class="language-mermaid"> inside a <pre>
+            // We need to convert these into <div class="mermaid"> for Mermaid.js to work properly
+            document.querySelectorAll('code.language-mermaid').forEach((block) => {
+                const parentPre = block.parentElement;
+                if (parentPre && parentPre.tagName === 'PRE') {
+                    const mermaidDiv = document.createElement('div');
+                    mermaidDiv.className = 'mermaid';
+                    mermaidDiv.textContent = block.textContent;
+                    parentPre.replaceWith(mermaidDiv);
+                }
+            });
             mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
         });
     </script>
