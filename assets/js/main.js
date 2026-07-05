@@ -24,4 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
     cards.forEach((card, index) => {
         card.style.transitionDelay = `${index * 0.1}s`;
     });
+    // Sidebar Toggle Logic
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    if (sidebarToggle) {
+        sidebarToggle.addEventListener('click', () => {
+            document.body.classList.toggle('sidebar-collapsed');
+        });
+    }
 });
