@@ -1,0 +1,9 @@
+name: "Clear Moon Blog"
+description: "A premium light-themed blogging experience"
+baseurl: "/Blogs" # The repository name is Blogs
+url: ""
+
+collections:
+  blogs:
+    output: true
+    permalink: /blogs/:name/
