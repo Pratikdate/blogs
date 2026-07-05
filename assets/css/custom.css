@@ -413,6 +413,11 @@ body {
     color: var(--accent);
 }
 
+.back-link-top {
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
 /* Animations */
 .fade-in {
     opacity: 0;
