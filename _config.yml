@@ -1,7 +1,7 @@
 name: "Pratik's Blogs"
 description: "Programming essays, thoughts, and notes."
 baseurl: "/Blogs" # The repository name is Blogs
-url: ""
+url: "https://pratikdate.github.io"
 
 collections:
   blogs:
