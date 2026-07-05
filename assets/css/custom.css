@@ -298,8 +298,8 @@ body {
 
 /* Individual Blog Post */
 .blog-post {
-    max-width: 720px;
-    margin: 0 auto;
+    max-width: 900px;
+    margin: 0;
 }
 
 .blog-header {
@@ -324,7 +324,6 @@ body {
 .blog-content {
     font-size: 1.25rem;
     color: var(--text-primary);
-    max-width: 750px;
 }
 
 .blog-content h1, .blog-content h2, .blog-content h3 {
