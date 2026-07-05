@@ -8,7 +8,8 @@ layout: default
     </div>
 
     <div class="posts" aria-live="polite">
-        {% for blog in site.blogs %}
+        {% assign sorted_blogs = site.blogs | sort: 'date' | reverse %}
+        {% for blog in sorted_blogs %}
         <a class="post-row slide-up" href="{{ site.baseurl }}{{ blog.url }}" style="animation-delay: 0.1s;">
             <div class="post-meta">
                 {% if blog.date %}
