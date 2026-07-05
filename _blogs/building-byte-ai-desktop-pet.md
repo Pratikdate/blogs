@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Building Byte: An Autonomous AI Desktop Pet for macOS"
 description: "A deep dive into the architecture, LLM integration, and graphics rendering behind a native macOS AI desktop companion."
 date: 2026-07-05

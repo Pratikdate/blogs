@@ -80,8 +80,8 @@ for md_file in glob.glob('_blogs/*.md'):
         'body_html': body_html
     })
 
-# Sort by date descending
-blogs.sort(key=lambda x: x['date_obj'], reverse=True)
+# Sort by date descending (and then by filename descending to match Jekyll's reverse sort)
+blogs.sort(key=lambda x: (x['date_obj'], x['slug']), reverse=True)
 
 # Generate index.html
 with open('index.html') as f:
@@ -122,7 +122,7 @@ for b in blogs:
 
 # Serve it
 os.chdir(preview_dir)
-PORT = 8096
+PORT = 8098
 print("Serving at port", PORT)
 Handler = http.server.SimpleHTTPRequestHandler
 with socketserver.TCPServer(("", PORT), Handler) as httpd:
