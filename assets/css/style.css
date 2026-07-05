@@ -25,7 +25,7 @@
 
 body {
     background-color: var(--bg-content);
-    background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+    background-image: radial-gradient(circle, var(--border-color) 1.5px, transparent 1.5px);
     background-size: 20px 20px; /* The spacing of the dot grid */
     color: var(--text-primary);
     font-family: var(--font-serif);
