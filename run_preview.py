@@ -17,19 +17,19 @@ os.makedirs(os.path.join(preview_dir, '_blogs'), exist_ok=True)
 # Copy assets
 if os.path.exists(os.path.join(preview_dir, 'assets')):
     shutil.rmtree(os.path.join(preview_dir, 'assets'))
-shutil.copytree('docs/assets', os.path.join(preview_dir, 'assets'))
+shutil.copytree('assets', os.path.join(preview_dir, 'assets'))
 
 # Read layouts
-with open('docs/_layouts/default.html') as f:
+with open('_layouts/default.html') as f:
     layout = f.read().replace('{{ site.baseurl }}', '').replace('{{ page.title | default: site.name }}', "Pratik's Blogs")
 
-with open('docs/_layouts/blog.html') as f:
+with open('_layouts/blog.html') as f:
     blog_layout = f.read().replace('{{ site.baseurl }}', '')
     blog_layout = re.sub(r'---.*?---', '', blog_layout, flags=re.DOTALL)
 
 # Parse all markdown files
 blogs = []
-for md_file in glob.glob('docs/_blogs/*.md'):
+for md_file in glob.glob('_blogs/*.md'):
     with open(md_file) as f:
         content = f.read()
     
@@ -84,7 +84,7 @@ for md_file in glob.glob('docs/_blogs/*.md'):
 blogs.sort(key=lambda x: x['date_obj'], reverse=True)
 
 # Generate index.html
-with open('docs/index.html') as f:
+with open('index.html') as f:
     index_content = f.read()
 index_content = re.sub(r'---.*?---', '', index_content, flags=re.DOTALL).replace('{{ site.baseurl }}', '')
 
