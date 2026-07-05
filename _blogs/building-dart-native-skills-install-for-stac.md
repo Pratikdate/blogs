@@ -114,3 +114,5 @@ By dropping the Node.js dependency and building a native Dart installation path,
 It was a fantastic exercise in working with file systems, handling network streams, and implementing robust security validations in Dart. If you're building CLI tools in Dart, always remember to clean up your temp directories and never trust paths from external sources!
 
 *Have you built CLI tools in Dart? Let me know your thoughts on Twitter!*
+
+> **Update:** The Pull Request for this feature ([#481](https://github.com/StacDev/stac/pull/481)) has officially been merged into the `StacDev/stac` repository! 🚀
