@@ -1,15 +1,15 @@
-/* Paper & Ink Theme Variables */
+/* Paper Wrap Theme Variables */
 :root {
-    --bg-base: #f8f1e5;
-    --bg-alt: #ffffff;
-    --text-primary: #11100e;
-    --text-secondary: #5a5753;
-    --text-muted: #8a857d;
+    --bg-base: #f5eedc; /* Richer, warmer paper color */
+    --bg-alt: rgba(255, 255, 255, 0.4);
+    --text-primary: #2c2825; /* Softer black, like ink */
+    --text-secondary: #5e554d;
+    --text-muted: #91867b;
     
-    --border-color: rgba(17, 16, 14, 0.1);
-    --border-hover: rgba(17, 16, 14, 0.3);
+    --border-color: rgba(44, 40, 37, 0.1);
+    --border-hover: rgba(44, 40, 37, 0.3);
     
-    --accent: #d94a38; /* A subtle rust/red accent often used in minimalist themes */
+    --accent: #b84b31; /* Brick/Rust accent */
     
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-serif: 'Lora', Georgia, Cambria, "Times New Roman", Times, serif;
@@ -25,8 +25,10 @@
 
 body {
     background-color: var(--bg-base);
+    /* High-quality SVG noise to simulate paper grain/texture */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
     color: var(--text-primary);
-    font-family: var(--font-serif); /* Defaulting to serif for a classic reading feel */
+    font-family: var(--font-serif);
     line-height: 1.7;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
