@@ -42,6 +42,12 @@
             {{ content }}
         </main>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+        });
+    </script>
     <script src="{{ site.baseurl }}/assets/js/main.js"></script>
 </body>
 </html>

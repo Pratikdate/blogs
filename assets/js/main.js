@@ -31,4 +31,18 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.toggle('sidebar-collapsed');
         });
     }
+
+    // Convert markdown mermaid blocks to div.mermaid for rendering
+    const mermaidNodes = document.querySelectorAll('pre code.language-mermaid');
+    mermaidNodes.forEach(node => {
+        const div = document.createElement('div');
+        div.className = 'mermaid';
+        div.textContent = node.textContent;
+        // If the code is wrapped in a pre, replace the whole pre
+        if (node.parentElement.tagName === 'PRE') {
+            node.parentElement.replaceWith(div);
+        } else {
+            node.replaceWith(div);
+        }
+    });
 });
