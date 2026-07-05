@@ -438,3 +438,52 @@ body {
     display: flex;
     justify-content: center;
 }
+
+/* Like Button */
+.blog-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.like-button {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 0.4rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    transition: var(--transition);
+}
+
+.like-button:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.like-button.liked {
+    background-color: rgba(194, 91, 68, 0.1);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.like-button.liked svg {
+    fill: var(--accent);
+    stroke: var(--accent);
+}
+
+.heart-icon {
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.like-button:active .heart-icon {
+    transform: scale(0.8);
+}
+.like-button.liked .heart-icon {
+    transform: scale(1.1);
+}
