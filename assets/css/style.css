@@ -1,15 +1,15 @@
-/* Split-Screen Magazine Theme */
+/* Clear Moon Lite Theme Variables */
 :root {
-    --bg-sidebar: #f5eedc; /* Warm, textured paper for sidebar */
-    --bg-content: #fdfdfa; /* Extremely clean, bright paper for reading */
-    --text-primary: #1a1816;
-    --text-secondary: #5e554d;
-    --text-muted: #91867b;
+    --bg-sidebar: #f4f7f9; /* Very soft, cool moon-grey/blue */
+    --bg-content: #ffffff; /* Pure crisp white */
+    --text-primary: #2c3e50; /* Deep midnight blue */
+    --text-secondary: #546e7a;
+    --text-muted: #90a4ae;
     
-    --border-color: rgba(44, 40, 37, 0.1);
-    --border-hover: rgba(44, 40, 37, 0.35);
+    --border-color: rgba(44, 62, 80, 0.1);
+    --border-hover: rgba(44, 62, 80, 0.25);
     
-    --accent: #b84b31;
+    --accent: #3a86ff; /* A vibrant, clear blue accent */
     
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-serif: 'Lora', Georgia, Cambria, "Times New Roman", Times, serif;
@@ -49,7 +49,6 @@ body {
 /* Sidebar Panel */
 .sidebar {
     background-color: var(--bg-sidebar);
-    background-image: url("https://www.transparenttextures.com/patterns/crumpled-paper.png");
     padding: 2.5rem;
     border-bottom: 1px solid var(--border-color);
 }
@@ -181,7 +180,6 @@ body {
 .content-pane {
     flex: 1;
     background-color: var(--bg-content);
-    background-image: url("https://www.transparenttextures.com/patterns/cream-paper.png");
     padding: 3rem 2rem;
     min-width: 0; /* Prevents flex blowout */
 }
