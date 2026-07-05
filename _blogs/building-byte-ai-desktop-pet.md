@@ -152,3 +152,5 @@ Allowing you to talk to Byte natively involved two native frameworks: `AVAudioEn
 Building Byte was a fascinating journey into mixing traditional game development patterns (State Machines, Vector paths) with modern Agentic AI (LLMs, JSON-based decision making, Reinforcement Learning). 
 
 By utilizing native macOS tools like `SCNView` and `AVSpeechSynthesizer`, Byte is incredibly lightweight, able to run completely locally via Ollama, and serves as a genuinely fun, interactive companion that makes the desktop feel just a little less lonely.
+
+> **Update:** The Byte AI Desktop Pet project has officially been open-sourced! 🚀 Check out the [GitHub repository](https://github.com/Pratikdate/Byte) to download him, build him from source, or contribute your own AI behaviors!
