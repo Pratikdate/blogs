@@ -1,12 +1,12 @@
-/* Realistic Paper & Ink Theme Variables */
+/* Split-Screen Magazine Theme */
 :root {
-    --bg-base: #d6c6b3; /* Darker kraft paper/wrapping paper color for the outer background */
-    --bg-sheet: #fcfcf9; /* Very bright, clean paper for the content sheet */
+    --bg-sidebar: #f5eedc; /* Warm, textured paper for sidebar */
+    --bg-content: #fdfdfa; /* Extremely clean, bright paper for reading */
     --text-primary: #1a1816;
     --text-secondary: #5e554d;
     --text-muted: #91867b;
     
-    --border-color: rgba(44, 40, 37, 0.15);
+    --border-color: rgba(44, 40, 37, 0.1);
     --border-hover: rgba(44, 40, 37, 0.35);
     
     --accent: #b84b31;
@@ -24,108 +24,138 @@
 }
 
 body {
-    background-color: var(--bg-base);
-    /* Crumpled wrapping paper texture for the outside desktop/background */
-    background-image: url("https://www.transparenttextures.com/patterns/crumpled-paper.png");
+    background-color: var(--bg-content);
     color: var(--text-primary);
     font-family: var(--font-serif);
     line-height: 1.7;
-    min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* The actual "Paper Sheet" that holds the content */
-.site-wrapper {
-    max-width: 800px;
-    margin: 3rem auto;
-    padding: 2rem 4rem;
-    background-color: var(--bg-sheet);
-    /* Subtle cream paper texture for the reading surface */
-    background-image: url("https://www.transparenttextures.com/patterns/cream-paper.png");
-    /* The "mask behind" / drop shadow effect */
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 1px 3px rgba(0, 0, 0, 0.1);
-    border-radius: 4px; /* Slight rounding so it doesn't look completely harsh */
+/* Split Layout Architecture */
+.split-layout {
     display: flex;
     flex-direction: column;
-    min-height: calc(100vh - 6rem);
+    min-height: 100vh;
 }
 
-/* Header & Nav */
-.header {
-    padding: 3rem 0;
+@media (min-width: 900px) {
+    .split-layout {
+        flex-direction: row;
+    }
 }
 
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* Sidebar Panel */
+.sidebar {
+    background-color: var(--bg-sidebar);
+    background-image: url("https://www.transparenttextures.com/patterns/crumpled-paper.png");
+    padding: 2.5rem;
     border-bottom: 1px solid var(--border-color);
-    padding-bottom: 1.5rem;
+}
+
+@media (min-width: 900px) {
+    .sidebar {
+        flex: 0 0 320px;
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        border-bottom: none;
+        border-right: 1px solid var(--border-color);
+        padding: 4rem 3rem;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.sidebar-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.brand {
+    margin-bottom: 3rem;
 }
 
 .logo {
-    font-family: var(--font-sans);
-    font-size: 1.25rem;
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    font-style: italic;
     font-weight: 600;
     text-decoration: none;
     color: var(--text-primary);
-    letter-spacing: -0.5px;
+    display: block;
+    margin-bottom: 1rem;
 }
 
-.logo:hover {
-    color: var(--accent);
+.bio {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
 }
 
 .nav-links {
-    font-family: var(--font-sans);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex-grow: 1;
 }
 
 .nav-links a {
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    font-weight: 500;
     text-decoration: none;
-    color: var(--text-secondary);
-    margin-left: 2rem;
-    font-size: 0.95rem;
+    color: var(--text-muted);
     transition: var(--transition);
 }
 
-.nav-links a:hover {
+.nav-links a:hover, .nav-links a.active {
     color: var(--text-primary);
 }
 
-/* Main Layout */
-.main-content {
+.sidebar-footer {
+    margin-top: 3rem;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* Right Content Pane */
+.content-pane {
     flex: 1;
-    padding: 3rem 0 5rem;
+    background-color: var(--bg-content);
+    background-image: url("https://www.transparenttextures.com/patterns/cream-paper.png");
+    padding: 3rem 2rem;
+    min-width: 0; /* Prevents flex blowout */
 }
 
-/* Hero Section */
-.hero {
-    margin-bottom: 4rem;
+@media (min-width: 900px) {
+    .content-pane {
+        padding: 5rem;
+    }
 }
 
-.hero-title {
-    font-size: 2.2rem;
-    font-weight: 400;
-    line-height: 1.3;
-    color: var(--text-primary);
-    max-width: 600px;
+/* Home / Posts List */
+.feed-container {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-/* Posts List */
 .list-header {
     display: flex;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
 .eyebrow {
     font-family: var(--font-sans);
     font-size: 0.85rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     color: var(--text-muted);
-    white-space: nowrap;
     margin-right: 1.5rem;
 }
 
@@ -136,23 +166,17 @@ body {
     border: none;
 }
 
-.posts {
-    display: flex;
-    flex-direction: column;
-}
-
-/* Post Row */
 .post-row {
     display: flex;
     flex-direction: column;
     text-decoration: none;
     color: inherit;
-    padding: 2.5rem 0;
+    padding: 3rem 0;
     border-bottom: 1px solid var(--border-color);
     transition: var(--transition);
 }
 
-@media (min-width: 600px) {
+@media (min-width: 700px) {
     .post-row {
         flex-direction: row;
         align-items: flex-start;
@@ -169,7 +193,7 @@ body {
     color: var(--text-muted);
     min-width: 140px;
     margin-bottom: 0.5rem;
-    padding-top: 0.3rem; /* Align with h2 text */
+    padding-top: 0.3rem;
 }
 
 .post-copy {
@@ -177,7 +201,8 @@ body {
 }
 
 .post-copy h2 {
-    font-size: 1.6rem;
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
     font-weight: 500;
     margin-bottom: 0.8rem;
     line-height: 1.3;
@@ -191,17 +216,14 @@ body {
 
 .post-copy p {
     color: var(--text-secondary);
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
+    font-size: 1.15rem;
+    margin-bottom: 1.5rem;
     line-height: 1.6;
 }
 
-.read-meta {
+.read-link {
     font-family: var(--font-sans);
     font-size: 0.9rem;
-}
-
-.read-link {
     color: var(--text-muted);
     display: inline-flex;
     align-items: center;
@@ -218,64 +240,76 @@ body {
 }
 
 .post-row:hover .arrow {
-    transform: translateX(4px);
+    transform: translateX(6px);
 }
 
 /* Individual Blog Post */
 .blog-post {
-    max-width: 680px;
+    max-width: 720px;
     margin: 0 auto;
 }
 
 .blog-header {
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
 }
 
 .blog-title {
-    font-size: 2.8rem;
+    font-size: 3.2rem;
     font-weight: 500;
-    line-height: 1.2;
-    margin-bottom: 1rem;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.5px;
 }
 
 .blog-date {
     font-family: var(--font-sans);
-    color: var(--text-muted);
-    font-size: 0.95rem;
+    color: var(--accent);
+    font-size: 1rem;
+    font-weight: 500;
 }
 
 .blog-content {
-    font-size: 1.15rem;
+    font-size: 1.25rem;
     color: var(--text-primary);
 }
 
 .blog-content h1, .blog-content h2, .blog-content h3 {
     font-family: var(--font-sans);
-    margin-top: 3rem;
-    margin-bottom: 1.2rem;
+    margin-top: 3.5rem;
+    margin-bottom: 1.5rem;
     font-weight: 600;
     letter-spacing: -0.5px;
     color: var(--text-primary);
+    line-height: 1.3;
 }
 
 .blog-content p {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.8rem;
+}
+
+.blog-content ul {
+    margin-bottom: 1.8rem;
+    padding-left: 1.5rem;
+}
+
+.blog-content li {
+    margin-bottom: 0.5rem;
 }
 
 .blog-content a {
-    color: var(--text-primary);
+    color: var(--accent);
     text-decoration: none;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid rgba(184, 75, 49, 0.3);
     transition: var(--transition);
 }
 
 .blog-content a:hover {
-    border-bottom-color: var(--text-primary);
+    border-bottom-color: var(--accent);
 }
 
 .blog-content code {
     font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
-    background-color: var(--bg-alt);
+    background-color: rgba(0,0,0,0.04);
     padding: 0.2rem 0.4rem;
     border-radius: 4px;
     font-size: 0.85em;
@@ -283,22 +317,24 @@ body {
 }
 
 .blog-content pre {
-    background-color: var(--bg-alt);
+    background-color: #1a1816;
+    color: #fdfdfa;
     padding: 1.5rem;
     border-radius: 8px;
     overflow-x: auto;
     margin-bottom: 2rem;
-    border: 1px solid var(--border-color);
+    font-size: 0.9rem;
 }
 
 .blog-content pre code {
     background-color: transparent;
+    color: inherit;
     border: none;
     padding: 0;
 }
 
 .blog-footer {
-    margin-top: 4rem;
+    margin-top: 5rem;
     padding-top: 2rem;
     border-top: 1px solid var(--border-color);
 }
@@ -308,48 +344,33 @@ body {
     color: var(--text-secondary);
     text-decoration: none;
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 1rem;
     transition: var(--transition);
 }
 
 .back-link:hover {
-    color: var(--text-primary);
-}
-
-/* Footer */
-.footer {
-    padding: 3rem 0;
-    border-top: 1px solid var(--border-color);
-    font-family: var(--font-sans);
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    text-align: center;
-}
-
-/* Empty State */
-.empty-state {
-    padding: 3rem 0;
-    color: var(--text-secondary);
-    font-family: var(--font-sans);
+    color: var(--accent);
 }
 
 /* Animations */
 .fade-in {
     opacity: 0;
-    transition: opacity 0.8s ease-out;
-}
-
-.fade-in.appear {
-    opacity: 1;
+    animation: fadeIn 0.8s ease-out forwards;
 }
 
 .slide-up {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.slide-up.appear {
-    opacity: 1;
-    transform: translateY(0);
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

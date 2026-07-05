@@ -7,29 +7,33 @@
     <meta name="description" content="{{ page.excerpt | default: site.description | strip_html | truncatewords: 25 }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Lora for beautiful serif headers, Inter for clean UI text -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/style.css">
 </head>
-<body class="clean-paper-theme">
-    <div class="site-wrapper">
-        <header class="header fade-in">
-            <nav class="nav-container">
-                <a href="{{ site.baseurl }}/" class="logo">Pratik's Blogs</a>
-                <div class="nav-links">
-                    <a href="{{ site.baseurl }}/">Writing</a>
-                    <a href="https://github.com/Pratikdate" target="_blank">About</a>
+<body class="split-magazine-theme">
+    <div class="split-layout">
+        <aside class="sidebar fade-in">
+            <div class="sidebar-inner">
+                <div class="brand">
+                    <a href="{{ site.baseurl }}/" class="logo">Pratik's Blogs</a>
+                    <p class="bio">Software engineer, minimalist, and writer. Exploring the intersection of code, design, and clear thinking.</p>
                 </div>
-            </nav>
-        </header>
+                
+                <nav class="nav-links">
+                    <a href="{{ site.baseurl }}/" class="active">Writing</a>
+                    <a href="https://github.com/Pratikdate" target="_blank">About</a>
+                    <a href="https://github.com/Pratikdate" target="_blank">Projects</a>
+                </nav>
+                
+                <footer class="sidebar-footer">
+                    <p>&copy; 2026 Pratik.<br>Keep building.</p>
+                </footer>
+            </div>
+        </aside>
 
-        <main class="main-content">
+        <main class="content-pane fade-in">
             {{ content }}
         </main>
-
-        <footer class="footer fade-in">
-            <p>&copy; 2026 Pratik. Keep building.</p>
-        </footer>
     </div>
     <script src="{{ site.baseurl }}/assets/js/main.js"></script>
 </body>

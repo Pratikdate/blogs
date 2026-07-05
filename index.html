@@ -1,19 +1,15 @@
 ---
 layout: default
 ---
-<div class="hero fade-in">
-    <h1 class="hero-title">Programming essays, thoughts, and notes.</h1>
-</div>
-
-<div class="posts-list">
-    <div class="list-header fade-in">
-        <span class="eyebrow">Latest posts</span>
+<div class="feed-container">
+    <div class="list-header slide-up">
+        <span class="eyebrow">Essays & Notes</span>
         <hr class="header-line">
     </div>
 
     <div class="posts" aria-live="polite">
         {% for blog in site.blogs %}
-        <a class="post-row slide-up" href="{{ site.baseurl }}{{ blog.url }}">
+        <a class="post-row slide-up" href="{{ site.baseurl }}{{ blog.url }}" style="animation-delay: 0.1s;">
             <div class="post-meta">
                 {% if blog.date %}
                 <time datetime="{{ blog.date | date_to_xmlschema }}">{{ blog.date | date: "%b %-d, %Y" }}</time>
